@@ -1,6 +1,7 @@
 // Always try to start your component's name with uppercase - TodosList, SectionTwo, Sectionone, Footer, Header
 
 import React from "react";
+import TodoItems from "./TodoItems";
 
 const dummyTodo = [
   { id: 1, todo: "Learn HTML" },
@@ -12,9 +13,11 @@ const dummyTodo = [
 const TodosList = () => {
   return (
     <ul className="bg-green-200 min-h-[30vh] px-8 flex justify-center items-center gap-4 flex-wrap">
-      <li className="bg-black/70 px-3 py-1 rounded-md cursor-pointer hover:scale-105 transition-all duration-100 text-white">
-        Learn HTML
-      </li>
+      {dummyTodo.map((item) => (
+        <TodoItems key = {item.id} props= {item} />
+
+      ))}
+        
     </ul>
   );
 };
