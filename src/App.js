@@ -7,12 +7,12 @@ import TodosList from "./Components/TodosList";
 import { useState } from "react";
 
 function App() {
-  const [todos, setTodos]= useState([]);
+  // const [todos, setTodos]= useState([]);
 
-  const handleAddTodo = (todo) => {
-    setTodos([...todos, todo]);
-  };
-  // count state
+  // const handleAddTodo = (item) => {
+  //   setTodos([...todos, item]);
+  // };
+  // // count state
   const [count, setCount] = useState(0);
 
   console.log("I am re-rendered");
@@ -24,6 +24,12 @@ function App() {
   const handleDecrease = () => {
     setCount(count - 1);
   };
+
+  const[ todos , setTodos] = useState([]);
+
+  const handleAddTodo = (todo) =>{
+    setTodos([...todos , todo])
+  }
 
   return (
     <>
@@ -45,7 +51,7 @@ function App() {
         </button>
       </div>
       <Header />
-      <SectionOne addToDo={handleAddTodo} />
+      <SectionOne ToDo={handleAddTodo} />
       <TodosList todos={todos} />
       
       <SectionTwo />

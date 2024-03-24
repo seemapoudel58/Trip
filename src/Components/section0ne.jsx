@@ -1,33 +1,34 @@
+
 import React, { useState } from "react";
 
-function SectionOne({AddToDo}) {
-  const [value, setValue] = useState("");
+function SectionOne({ ToDo }) {
+  const [number, setNumber] = useState('1');
+  const [text, setText] = useState('');
 
-  const handleChange = (e) => {
-    setValue(e.target.value);
-    console.log("value", value);
+  const handleNumber = (e) => {
+    setNumber(e.target.value);
   };
 
-  const[number, setNumber]= useState('1');
-  const handleChangeNumber = (e) =>{
-    setNumber(e.target.value);
-  }
+  const handleText = (e) => {
+    setText(e.target.value);
+  };
+
   const addToDo = () => {
-    if (value.trim()) {
-      const newTodo = `${number} - ${value}`;
-      AddTodo(newTodo); 
-      setValue("");
+    if (text.trim()) {
+      const newTodo = `${number} - ${text}`;
+      ToDo(newTodo);
+      setText('');
     }
   };
-  
 
   return (
-    <div className=" bg-slate-400 min-h-[20vh] flex items-center justify-center space-x-8 ">
+    <div className="bg-slate-400 min-h-[20vh] flex items-center justify-center space-x-8">
       <h2 className="text-xl font-semibold">What do you need for your trip?</h2>
       <div className="">
         <select 
-        value= {number}
-        onChange={handleChangeNumber} className="bg-gray-200 border-2 border-black outline-none rounded-md py-2 px-4">
+          value={number}
+          onChange={handleNumber} 
+          className="bg-gray-200 border-2 border-black outline-none rounded-md py-2 px-4">
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
@@ -43,14 +44,14 @@ function SectionOne({AddToDo}) {
 
       <article className="rounded">
         <input
-          value={value}
-          onChange={handleChange}
+          value={text}
+          onChange={handleText}
           type="text"
           placeholder="Item"
-          className="bg-gray-200 appearance-none border-2 border-black rounded w-full py-2 px-4 text-gray-700 "
+          className="bg-gray-200 appearance-none border-2 border-black rounded w-full py-2 px-4 text-gray-700"
         />
       </article>
-      <article className=" bg-gray-200 border-[0.12rem] border-black rounded-lg py-[0.3rem] px-[1rem]">
+      <article className="bg-gray-200 border-[0.12rem] border-black rounded-lg py-[0.3rem] px-[1rem]">
         <button onClick={addToDo}>Add</button>
       </article>
       
