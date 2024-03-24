@@ -8,7 +8,7 @@ const dummyTodo = [
   { id: 2, bgColor: "bg-green-400", todo: "Learn JavaScript" },
   { id: 3, bgColor: "bg-yellow-400", todo: "Learn React Node Next" },
   { id: 4, bgColor: "bg-blue-400", todo: "Live your life" },
-  { id: 4, todo: "Rock the web development" },
+  { id: 5, todo: "Rock the web development" },
 ];
 
 const TodosList = () => {
