@@ -15,7 +15,7 @@ const TodosList = () => {
   return (
     <ul className="bg-green-200 min-h-[30vh] px-8 flex justify-center items-center gap-4 flex-wrap">
       {dummyTodo.map((item) => (
-        <TodoItem key={item.id} bgColor={item.bgColor} item={item} />
+        <TodoItem key={item.id} item={item} />
       ))}
     </ul>
   );
