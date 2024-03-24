@@ -1,9 +1,8 @@
-
 import React, { useState } from "react";
 
 function SectionOne({ ToDo }) {
-  const [number, setNumber] = useState('1');
-  const [text, setText] = useState('');
+  const [number, setNumber] = useState("1");
+  const [text, setText] = useState("");
 
   const handleNumber = (e) => {
     setNumber(e.target.value);
@@ -15,9 +14,9 @@ function SectionOne({ ToDo }) {
 
   const addToDo = () => {
     if (text.trim()) {
-      const newTodo = `${number} - ${text}`;
+      const newTodo = `${text} (${number})`;
       ToDo(newTodo);
-      setText('');
+      setText("");
     }
   };
 
@@ -25,10 +24,11 @@ function SectionOne({ ToDo }) {
     <div className="bg-slate-400 min-h-[20vh] flex items-center justify-center space-x-8">
       <h2 className="text-xl font-semibold">What do you need for your trip?</h2>
       <div className="">
-        <select 
+        <select
           value={number}
-          onChange={handleNumber} 
-          className="bg-gray-200 border-2 border-black outline-none rounded-md py-2 px-4">
+          onChange={handleNumber}
+          className="bg-gray-200 border-2 border-black outline-none rounded-md py-2 px-4"
+        >
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
@@ -54,7 +54,6 @@ function SectionOne({ ToDo }) {
       <article className="bg-gray-200 border-[0.12rem] border-black rounded-lg py-[0.3rem] px-[1rem]">
         <button onClick={addToDo}>Add</button>
       </article>
-      
     </div>
   );
 }

@@ -2,12 +2,16 @@
 
 import React from "react";
 
-
-const TodosList = ({todos}) => {
+const TodosList = ({ todos }) => {
   return (
-    <ul className="bg-green-200 min-h-[30vh] px-8 flex justify-center items-center gap-4 flex-wrap">
+    <ul className="bg-green-200 min-h-[30vh] py-20 flex flex-row px-8 flex-wrap justify-start items-center gap-4">
       {todos.map((item, index) => (
-        <li key={index}>{item}</li>
+        <li
+          className="bg-black/70 text-white px-4 py-2 rounded-md hover:scale-105 cursor-pointer transition-all"
+          key={index}
+        >
+          {item}
+        </li>
       ))}
     </ul>
   );

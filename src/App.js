@@ -25,11 +25,33 @@ function App() {
     setCount(count - 1);
   };
 
-  const[ todos , setTodos] = useState([]);
+  const [todos, setTodos] = useState([
+    "Passport (1)",
+    "Visa (if required) (1)",
+    "Travel tickets (1 set)",
+    "Accommodation details (1)",
+    "Travel itinerary (1)",
+    "Travel insurance documents (1)",
+    "Wallet with cash, credit/debit cards (1)",
+    "Mobile phone and charger (1)",
+    "Maps or navigation apps (1)",
+    "Medications and first aid kit (1)",
+    "Travel-sized toiletries (toothbrush, toothpaste, shampoo, etc.) (1 set)",
+    "Sunscreen and insect repellent (1 each)",
+    "Weather-appropriate clothing (1 set)",
+    "Comfortable walking shoes (1 pair)",
+    "Travel pillow and blanket (1 each)",
+    "Reusable water bottle (1)",
+    "Snacks and refreshments (as needed)",
+    "Travel guidebook or language translation app (1)",
+    "Camera or smartphone for capturing memories (1)",
+    "Travel documents organizer (folder or pouch) (1)",
+    "Entertainment (books, music, games) (as needed)",
+  ]);
 
-  const handleAddTodo = (todo) =>{
-    setTodos([...todos , todo])
-  }
+  const handleAddTodo = (todo) => {
+    setTodos([...todos, todo]);
+  };
 
   return (
     <>
@@ -53,7 +75,7 @@ function App() {
       <Header />
       <SectionOne ToDo={handleAddTodo} />
       <TodosList todos={todos} />
-      
+
       <SectionTwo />
       <Footer />
     </>
