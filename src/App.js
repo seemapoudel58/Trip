@@ -53,12 +53,6 @@ function App() {
     setTodos([...todos, todo]);
   };
 
-  const onDelete = (index) => {
-    const newTodos = todos.filter((itemIndex) =>index !== itemIndex);
-    setTodos(newTodos);
-};
-
-
   return (
     <>
       <div className="min-h-[50dvh] bg-green-200 flex justify-center items-center gap-4">
@@ -79,8 +73,9 @@ function App() {
         </button>
       </div>
       <Header />
-      <SectionOne ToDo={handleAddTodo}  />
-      <TodosList todos={todos} onDelete = {onDelete} />
+      <SectionOne ToDo={handleAddTodo} />
+      <TodosList todos={todos} />
+
       <SectionTwo />
       <Footer />
     </>
