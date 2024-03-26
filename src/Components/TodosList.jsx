@@ -3,7 +3,7 @@
 import React from "react";
 import { MdDelete } from "react-icons/md";
 
-const TodosList = ({ todos, onDelete }) => {
+const TodosList = ({ todos, onDelete , message }) => {
   return (
     <ul className="bg-green-200 min-h-[30vh] py-20 flex flex-row px-8 flex-wrap justify-center items-center gap-4">
       {todos.map((item, index) => (
@@ -17,6 +17,7 @@ const TodosList = ({ todos, onDelete }) => {
           </span>
         </li>
       ))}
+      {message  && <p>{message}</p>}
     </ul>
   );
 };

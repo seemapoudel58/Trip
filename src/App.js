@@ -58,14 +58,20 @@ function App() {
     setTodos(filteredTodos);
   }
   
+  
+
+  const[message , setMessage ] = useState('');
+
+  
   const handleClearTodos = () =>{
-    if(todos.length > 0){
+    if(todos.length> 0){
       setTodos([]);
-    }
-    else {
-      alert('The todo list is empty please enter something');
+      setMessage('');
+    }else{
+      setMessage("The todo list is empty. Please enter something to remove.");
     }
   }
+
 
 
 
@@ -90,9 +96,9 @@ function App() {
       </div>
       <Header />
       <SectionOne ToDo={handleAddTodo} />
-      <TodosList todos={todos} onDelete = {handleDeleteTodo}/>
+      <TodosList todos={todos} onDelete = {handleDeleteTodo}  message={message}/>
 
-      <SectionTwo  handleClearTodos = {handleClearTodos}/>
+      <SectionTwo  handleClearTodos = {handleClearTodos} />
       <Footer />
     </>
   );
