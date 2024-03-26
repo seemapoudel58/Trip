@@ -1,6 +1,6 @@
 import React from "react";
 
-function SectionTwo() {
+function SectionTwo({handleClearTodos}) {
   return (
     <div>
       <article className=" h-[40vh] bg-red-200  flex items-center justify-center space-x-11">
@@ -12,7 +12,9 @@ function SectionTwo() {
           </select>
         </div>
         <div className="border-2 border-black bg-gray-200 rounded-lg p-2">
-          <button>Clear List</button>
+          <button onClick={
+            handleClearTodos
+          }>Clear List</button>
         </div>
       </article>
     </div>

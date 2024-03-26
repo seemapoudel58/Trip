@@ -53,6 +53,22 @@ function App() {
     setTodos([...todos, todo]);
   };
 
+  const handleDeleteTodo = (index) =>{
+    const filteredTodos = todos.filter((_ , i) => i  !== index);
+    setTodos(filteredTodos);
+  }
+  
+  const handleClearTodos = () =>{
+    if(todos.length > 0){
+      setTodos([]);
+    }
+    else {
+      alert('The todo list is empty please enter something');
+    }
+  }
+
+
+
   return (
     <>
       <div className="min-h-[50dvh] bg-green-200 flex justify-center items-center gap-4">
@@ -74,12 +90,13 @@ function App() {
       </div>
       <Header />
       <SectionOne ToDo={handleAddTodo} />
-      <TodosList todos={todos} />
+      <TodosList todos={todos} onDelete = {handleDeleteTodo}/>
 
-      <SectionTwo />
+      <SectionTwo  handleClearTodos = {handleClearTodos}/>
       <Footer />
     </>
   );
-}
+  }
+
 
 export default App;
