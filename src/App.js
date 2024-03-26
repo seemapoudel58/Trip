@@ -53,6 +53,11 @@ function App() {
     setTodos([...todos, todo]);
   };
 
+  const handleDeleteTodo = (index) => {
+    const filteredTodos = todos.filter((_, i) => i !== index);
+    setTodos(filteredTodos);
+  };
+
   return (
     <>
       <div className="min-h-[50dvh] bg-green-200 flex justify-center items-center gap-4">
@@ -74,7 +79,7 @@ function App() {
       </div>
       <Header />
       <SectionOne ToDo={handleAddTodo} />
-      <TodosList todos={todos} />
+      <TodosList todos={todos} handleDeleteTodo={handleDeleteTodo} />
 
       <SectionTwo />
       <Footer />
