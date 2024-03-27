@@ -53,27 +53,14 @@ function App() {
     setTodos([...todos, todo]);
   };
 
-  const handleDeleteTodo = (index) =>{
-    const filteredTodos = todos.filter((_ , i) => i  !== index);
+  const handleDeleteTodo = (index) => {
+    const filteredTodos = todos.filter((_, i) => i !== index);
     setTodos(filteredTodos);
-  }
-  
-  
+  };
 
-  const[message , setMessage ] = useState('');
-
-  
-  const handleClearTodos = () =>{
-    if(todos.length> 0){
-      setTodos([]);
-      setMessage('');
-    }else{
-      setMessage("The todo list is empty. Please enter something to remove.");
-    }
-  }
-
-
-
+  const handleClearTodos = () => {
+    setTodos([]);
+  };
 
   return (
     <>
@@ -96,13 +83,12 @@ function App() {
       </div>
       <Header />
       <SectionOne ToDo={handleAddTodo} />
-      <TodosList todos={todos} onDelete = {handleDeleteTodo}  message={message}/>
+      <TodosList todos={todos} onDelete={handleDeleteTodo} />
 
-      <SectionTwo  handleClearTodos = {handleClearTodos} />
+      <SectionTwo handleClearTodos={handleClearTodos} />
       <Footer />
     </>
   );
-  }
-
+}
 
 export default App;
