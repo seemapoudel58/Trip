@@ -62,6 +62,11 @@ function App() {
     setTodos([]);
   };
 
+  const message =
+    todos.length > 0
+      ? false
+      : "There is nothing in the todo. Start adding some.";
+
   return (
     <>
       <div className="min-h-[50dvh] bg-green-200 flex justify-center items-center gap-4">
@@ -83,7 +88,7 @@ function App() {
       </div>
       <Header />
       <SectionOne ToDo={handleAddTodo} />
-      <TodosList todos={todos} onDelete={handleDeleteTodo} />
+      <TodosList todos={todos} onDelete={handleDeleteTodo} message={message} />
 
       <SectionTwo handleClearTodos={handleClearTodos} />
       <Footer />

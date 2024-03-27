@@ -3,13 +3,13 @@
 import React from "react";
 import { MdDelete } from "react-icons/md";
 
-const TodosList = ({ todos, onDelete }) => {
-  if (!todos.length)
-    return (
-      <p className="text-red-700 py-20 text-center font-semibold text-3xl bg-green-200 min-h-[30vh] flex flex-row px-8 flex-wrap justify-center items-center gap-4">
-        There is nothing in the list. Start adding some.
-      </p>
-    );
+const TodosList = ({ todos, onDelete, message }) => {
+  // if (!todos.length)
+  //   return (
+  //     <p className="text-red-700 py-20 text-center font-semibold text-3xl bg-green-200 min-h-[30vh] flex flex-row px-8 flex-wrap justify-center items-center gap-4">
+  //       There is nothing in the list. Start adding some.
+  //     </p>
+  //   );
 
   return (
     <ul className="bg-green-200 min-h-[30vh] py-20 flex flex-row px-8 flex-wrap justify-center items-center gap-4">
@@ -29,6 +29,9 @@ const TodosList = ({ todos, onDelete }) => {
           </span>
         </li>
       ))}
+      {message && (
+        <p className="text-red-600 font-2xl font-semibold">{message}</p>
+      )}
     </ul>
   );
 };
