@@ -70,11 +70,6 @@ function App() {
     setTodos(newTodo);
   }
 
-
-
-
-
-
   const handleClearTodos = () => {
     setTodos([]);
   };

@@ -1,6 +1,6 @@
 import React from "react";
 
-function SectionTwo({message , handleClearTodos}) {
+function SectionTwo({ handleClearTodos}) {
 
   
   return (

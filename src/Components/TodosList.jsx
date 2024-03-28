@@ -12,13 +12,7 @@ const TodosList = ({ todos, onDelete, onComplete, message }) => {
   //     </p>
   //   );
 
-  if (!todos.length) {
-    return (
-      <p>
-        The todo list is empty. Please try to add something in the todo list.
-      </p>
-    );
-  }
+  
   return (
     <ul className="bg-green-200 min-h-[30vh] py-20 flex flex-row px-8 flex-wrap justify-center items-center gap-4">
       {todos.map((item, index) => (
@@ -52,7 +46,7 @@ const TodosList = ({ todos, onDelete, onComplete, message }) => {
         </li>
       ))}
       {message && (
-        <p className="text-red-600 font-2xl font-semibold">{message}</p>
+        <p className=" flex item-center justify-center text-red-600 font-2xl font-semibold">{message}</p>
       )}
     </ul>
   );
