@@ -15,72 +15,84 @@ dogs.forEach((puppy) => {
 });
 console.log(dogs);
 
-
-
 // 2. Find Roshna's dog and find whether it's eating too much or too little.
 // if recFoodPortion is greater than currFood then it is more other wise less or if they are equal, the dog is eating fine.
 
-const RoshnaDog = dogs.find((puppy)=> puppy.owners.includes('Roshna'));
+const RoshnaDog = dogs.find((puppy) => puppy.owners.includes("Roshna"));
 
-if(RoshnaDog){
-  if(RoshnaDog.recFoodPortion >  RoshnaDog.currFood){
+if (RoshnaDog) {
+  if (RoshnaDog.recFoodPortion > RoshnaDog.currFood) {
     console.log("Dear Roshna You should be controlling your puppy's diet.");
-  }
-  else if (RoshnaDog.recFoodPortion === RoshnaDog.currFood){
+  } else if (RoshnaDog.recFoodPortion === RoshnaDog.currFood) {
     console.log("Your Puppy is just right!");
-
+  } else {
+    console.log(
+      "Dear Roshna Your puppy is underweight. You should be feeding her more."
+    );
   }
-  else {
-    console.log("Dear Roshna Your puppy is underweight. You should be feeding her more.");
-
-  }
-
+} else {
+  console.log("Roshna doesnot own a puppy.");
 }
-else{
-   console.log("Roshna doesnot own a puppy.");
-}
-
-
 
 // 3. Output arrays containing all owners of dogs who eat too much and too little.
 let ownersOfTooMuchEatingDogs = [];
 let ownersOfLittleEatingDogs = [];
 
-dogs.forEach((puppy) =>{
-  const eatingToMuch = Math.floor( puppy.recFoodPortion < puppy.currFood);
-  if(eatingToMuch){
+dogs.forEach((puppy) => {
+  const eatingToMuch = Math.floor(puppy.recFoodPortion < puppy.currFood);
+  if (eatingToMuch) {
     ownersOfTooMuchEatingDogs.push(...puppy.owners);
-  }
-  else{
+  } else {
     ownersOfLittleEatingDogs.push(...puppy.owners);
   }
-})
-console.log("owners of earting to much", ownersOfTooMuchEatingDogs);
+});
+// console.log("owners of earting to much", ownersOfTooMuchEatingDogs);
 // Like: ownersOfTooMuchEatingDogs = ["Nishan", "Nayan", "Roshna"]
 // Like: ownersOfLittleEatingDogs = ["Nishan", "Nayan", "Roshna"] -> something like this
 
+// Alternative to question 3
+const ownersOfTooMuchEatingDogs2 = dogs
+  .filter((dog) => dog.recFoodPortion < dog.currFood)
+  .map((moreEatingDogs) => moreEatingDogs.owners)
+  .flat();
+// You can use flat to take out the nested array inside an array
+
+const ownersOfLessEatingDogs2 = dogs
+  .filter((dog) => dog.recFoodPortion > dog.currFood)
+  .map((moreEatingDogs) => moreEatingDogs.owners)
+  .flat();
+
+// console.log("OWNERS OF TOO MUCH EATING DOGS ", ownersOfTooMuchEatingDogs2);
+// console.log("OWNERS OF LESS EATING DOGS ", ownersOfLessEatingDogs2);
 
 // 4. Console log the question 3 as: 'Nishan and Nayan and Roshna's dogs eat too much.
 // Console log the question 3 as: 'Nishan and Nayan and Roshna's dogs eat too little.
 
-ownersOfTooMuchEatingDogs.forEach((owner) =>{
-  console.log(`${owner}'s dogs eat too much.`);
-})
+console.log(
+  `${ownersOfTooMuchEatingDogs2.join(" and ")}'s dogs are eating too much.`
+);
+console.log(
+  `${ownersOfLessEatingDogs2.join(" and ")}'s dogs are eating too little.`
+);
 
-ownersOfLittleEatingDogs.forEach((owner) =>{
-  console.log(`${owner}'s dog eats a little less`);
-})
+// ownersOfTooMuchEatingDogs.forEach((owner) => {
+//   // console.log(`${owner}'s dogs eat too much.`);
+// });
+
+// ownersOfLittleEatingDogs.forEach((owner) => {
+//   console.log(`${owner}'s dog eats a little less`);
+// });
+
 // 5. Console log true, if there is at least one dog eating exactly the right amount of food.
-let isEatingRightAmountOfFood =  false;
-dogs.forEach((puppy) =>{
-  if(puppy.recFoodPortion === puppy.currFood){
-    isEatingRightAmountOfFood=true;
+let isEatingRightAmountOfFood = false;
+dogs.forEach((puppy) => {
+  if (puppy.recFoodPortion === puppy.currFood) {
+    isEatingRightAmountOfFood = true;
     return;
   }
-})
-console.log("Is at least one dog eating the exact amount:", isEatingRightAmountOfFood);
-
+});
+// console.log("Is at least one dog eating the exact amount:", isEatingRightAmountOfFood);
 
 // 6. Sort the dogs research array in ascending order according to the weight.
-dogs.sort((a,b)=>a.weight - b.weight);
-console.log("Sorted Dogs by Weight" , dogs);
+dogs.sort((a, b) => a.weight - b.weight);
+// console.log("Sorted Dogs by Weight" , dogs);
