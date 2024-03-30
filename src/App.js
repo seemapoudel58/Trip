@@ -25,7 +25,6 @@ function App() {
     setCount(count - 1);
   };
 
-  
   const [todos, setTodos] = useState([
     { text: "Passport (1)", completed: false },
     { text: "Visa (if required) (1)", completed: false },
@@ -37,19 +36,33 @@ function App() {
     { text: "Mobile phone and charger (1)", completed: false },
     { text: "Maps or navigation apps (1)", completed: false },
     { text: "Medications and first aid kit (1)", completed: false },
-    { text: "Travel-sized toiletries (toothbrush, toothpaste, shampoo, etc.) (1 set)", completed: false },
+    {
+      text: "Travel-sized toiletries (toothbrush, toothpaste, shampoo, etc.) (1 set)",
+      completed: false,
+    },
     { text: "Sunscreen and insect repellent (1 each)", completed: false },
     { text: "Weather-appropriate clothing (1 set)", completed: false },
     { text: "Comfortable walking shoes (1 pair)", completed: false },
     { text: "Travel pillow and blanket (1 each)", completed: false },
     { text: "Reusable water bottle (1)", completed: false },
     { text: "Snacks and refreshments (as needed)", completed: false },
-    { text: "Travel guidebook or language translation app (1)", completed: false },
-    { text: "Camera or smartphone for capturing memories (1)", completed: false },
-    { text: "Travel documents organizer (folder or pouch) (1)", completed: false },
-    { text: "Entertainment (books, music, games) (as needed)", completed: false },
-]);
-
+    {
+      text: "Travel guidebook or language translation app (1)",
+      completed: false,
+    },
+    {
+      text: "Camera or smartphone for capturing memories (1)",
+      completed: false,
+    },
+    {
+      text: "Travel documents organizer (folder or pouch) (1)",
+      completed: false,
+    },
+    {
+      text: "Entertainment (books, music, games) (as needed)",
+      completed: false,
+    },
+  ]);
 
   const handleAddTodo = (todo) => {
     setTodos([...todos, todo]);
@@ -60,43 +73,41 @@ function App() {
     setTodos(filteredTodos);
   };
 
-  const handleCompleted = (index) =>{
-    const newTodo = todos.map((todo , i)=>{
-      if(index === i){
-        return { ...todo, completed:!todo.completed};
+  const handleCompleted = (index) => {
+    const newTodo = todos.map((todo, i) => {
+      if (index === i) {
+        return { ...todo, completed: !todo.completed };
       }
       return todo;
     });
     setTodos(newTodo);
-  }
+  };
 
   const handleClearTodos = () => {
     setTodos([]);
   };
 
-
   const message =
     todos.length > 0
       ? false
       : "There is nothing in the todo. Start adding some.";
-  
-      
-    const [ sort, setSort] = useState('option1');
 
-    const sortTodos = () => {
-      if (sort === 'option2') {
-        setTodos([...todos].sort((a, b) => a.completed - b.completed));
-      } else if (sort === 'option3') {
-        setTodos([...todos].sort((a, b) => a.text.localeCompare(b.text)));
-      } else {
-        // No sorting needed for 'option1'
-      }
-    };
-    
-    const handleSort = (e) =>{
-      setSort(e.target.value);
-      sortTodos();
+  const [sort, setSort] = useState("option1");
+
+  const sortTodos = () => {
+    if (sort === "option2") {
+      setTodos([...todos].sort((a, b) => a.completed - b.completed));
+    } else if (sort === "option3") {
+      setTodos([...todos].sort((a, b) => a.text.localeCompare(b.text)));
+    } else {
+      // No sorting needed for 'option1'
     }
+  };
+
+  const handleSort = (e) => {
+    setSort(e.target.value);
+    sortTodos();
+  };
 
   return (
     <>
@@ -119,9 +130,18 @@ function App() {
       </div>
       <Header />
       <SectionOne ToDo={handleAddTodo} />
-      <TodosList todos={todos} onDelete={handleDeleteTodo} onComplete = {handleCompleted} message={message} />
+      <TodosList
+        todos={todos}
+        onDelete={handleDeleteTodo}
+        onComplete={handleCompleted}
+        message={message}
+      />
 
-      <SectionTwo handleClearTodos={handleClearTodos} handleSort = {handleSort} sort = {sort}/>
+      <SectionTwo
+        handleClearTodos={handleClearTodos}
+        handleSort={handleSort}
+        sort={sort}
+      />
       <Footer />
     </>
   );

@@ -14,7 +14,10 @@ function SectionOne({ ToDo }) {
 
   const addToDo = () => {
     if (text.trim()) {
-      const newTodo = `${text} (${number})`;
+      const newTodo = {
+        text: `${text} (${number})`,
+        completed: false,
+      };
       ToDo(newTodo);
       setText("");
     }
@@ -53,7 +56,6 @@ function SectionOne({ ToDo }) {
       </article>
       <article className="bg-gray-200 border-[0.12rem] border-black rounded-lg py-[0.3rem] px-[1rem]">
         <button onClick={addToDo}>Add</button>
-        
       </article>
     </div>
   );
