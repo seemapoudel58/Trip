@@ -74,12 +74,29 @@ function App() {
     setTodos([]);
   };
 
+
   const message =
     todos.length > 0
       ? false
       : "There is nothing in the todo. Start adding some.";
+  
+      
+    const [ sort, setSort] = useState('option1');
 
-
+    const sortTodos = () => {
+      if (sort === 'option2') {
+        setTodos([...todos].sort((a, b) => a.completed - b.completed));
+      } else if (sort === 'option3') {
+        setTodos([...todos].sort((a, b) => a.text.localeCompare(b.text)));
+      } else {
+        // No sorting needed for 'option1'
+      }
+    };
+    
+    const handleSort = (e) =>{
+      setSort(e.target.value);
+      sortTodos();
+    }
 
   return (
     <>
@@ -104,7 +121,7 @@ function App() {
       <SectionOne ToDo={handleAddTodo} />
       <TodosList todos={todos} onDelete={handleDeleteTodo} onComplete = {handleCompleted} message={message} />
 
-      <SectionTwo handleClearTodos={handleClearTodos} />
+      <SectionTwo handleClearTodos={handleClearTodos} handleSort = {handleSort} sort = {sort}/>
       <Footer />
     </>
   );
