@@ -95,12 +95,12 @@ function App() {
   const [sort, setSort] = useState("option1");
 
   const sortTodos = () => {
-    if (sort === "option2") {
+    if (sort === "status") {
       setTodos([...todos].sort((a, b) => a.completed - b.completed));
-    } else if (sort === "option3") {
+    } else if (sort === "description") {
       setTodos([...todos].sort((a, b) => a.text.localeCompare(b.text)));
     } else {
-      // No sorting needed for 'option1'
+      // No sorting needed for 'input'
     }
   };
 
