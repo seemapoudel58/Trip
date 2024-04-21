@@ -109,6 +109,36 @@ function App() {
     sortTodos();
   };
 
+  const[editedText , setEditedText] = useState();
+  const[editingId, setEditingId] = useState(null);
+  const[isEditing , setIsEditing] = useState(false);
+
+  const handleEdit = ( index) =>{
+    setEditingId(index);
+    setEditedText(todos[index].text);
+    setIsEditing(true);
+    if (index === editingId) {
+      setIsEditing(!isEditing);
+    }
+  }
+  const handleChange = (e) =>{
+    setEditedText(e.target.value);
+    // setEditingId(index);
+
+  }
+  const handleSave = () => {
+    const updatedTodos = [...todos ];
+    updatedTodos[editingId].text = editedText;
+    setTodos(updatedTodos);
+    setIsEditing(false);
+    setEditingId(null);
+    setEditedText('');
+
+  }
+ 
+
+  
+
   return (
     <>
       <div className="min-h-[50dvh] bg-green-200 flex justify-center items-center gap-4">
@@ -135,6 +165,12 @@ function App() {
         onDelete={handleDeleteTodo}
         onComplete={handleCompleted}
         message={message}
+        handleEdit={ handleEdit}
+        handleSave = {handleSave}
+        handleChange = {handleChange}
+        isEditing = {isEditing}
+        editingId={ editingId}
+        editedText={editedText}
       />
 
       <SectionTwo
